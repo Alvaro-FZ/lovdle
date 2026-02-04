@@ -87,7 +87,7 @@ function Lovdle() {
   return (
     <div className="font-dynapuff min-h-screen bg-fuchsia-50 text-gray-900 flex flex-col items-center justify-start">
       {/* Header compacto */}
-      <header className="w-full flex items-center justify-center bg-fuchsia-100 py-2 mb-4 shadow-sm">
+      <header className="w-full flex items-center justify-center bg-fuchsia-100 py-2 mb-22 shadow-sm">
         <h1 className="text-2xl md:text-3xl font-bold text-fuchsia-500 tracking-wide">LOVDLE</h1>
       </header>
 
