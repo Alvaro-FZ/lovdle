@@ -1,27 +1,59 @@
 import { useState, useEffect } from 'react';
 
-// 1. Array con palabras de diferentes longitudes
-const WORDS = ["AMOR", "BESOS", "PASION", "CORAZON", "DULCE", "Miel", "ETERNO"];
+const WORDS = ["AMOR", "BESOS", "PASION", "CORAZON", "CARACOLI", "DULCE", "MIEL", "ETERNO", "CARIÑO", "POESIA"];
 
 function Lovdle() {
-  // Escogemos la palabra al azar y derivamos todo de ella
-  const [solution] = useState(() => {
-    const randomIndex = Math.floor(Math.random() * WORDS.length);
-    return WORDS[randomIndex].toUpperCase();
-  });
-
-  const wordLength = solution.length; // 4, 5, 7... lo que sea.
+  const [solution, setSolution] = useState("");
   const [board, setBoard] = useState(Array(6).fill(""));
   const [currentRow, setCurrentRow] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  const [gameStatus, setGameStatus] = useState("playing"); // "playing", "won", "lost"
+
+  // Función para elegir una palabra que no haya sido acertada
+  const pickNewWord = () => {
+    const usedWords = JSON.parse(localStorage.getItem('lovdle_used_words') || "[]");
+
+    // Filtramos las palabras que NO están en la lista de usadas
+    const availableWords = WORDS.filter(w => !usedWords.includes(w.toUpperCase()));
+
+    if (availableWords.length === 0) {
+      alert("¡Increíble! Te has pasado todas las palabras. Limpiando historial...");
+      localStorage.setItem('lovdle_used_words', "[]");
+      return WORDS[Math.floor(Math.random() * WORDS.length)].toUpperCase();
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableWords.length);
+    return availableWords[randomIndex].toUpperCase();
+  };
+
+  // Inicializar el juego
+  useEffect(() => {
+    setSolution(pickNewWord());
+  }, []);
+
+  const resetGame = () => {
+    setSolution(pickNewWord());
+    setBoard(Array(6).fill(""));
+    setCurrentRow(0);
+    setIsFinished(false);
+    setGameStatus("playing");
+  };
+
+  const saveWin = (word) => {
+    const usedWords = JSON.parse(localStorage.getItem('lovdle_used_words') || "[]");
+    if (!usedWords.includes(word)) {
+      usedWords.push(word);
+      localStorage.setItem('lovdle_used_words', JSON.stringify(usedWords));
+    }
+  };
 
   useEffect(() => {
-    if (isFinished) return;
+    if (isFinished || !solution) return;
 
     const handleKeyDown = (e) => {
       const key = e.key.toUpperCase();
+      const wordLength = solution.length;
 
-      // Solo permite letras y limita por la longitud de la solución actual
       if (/^[A-ZÑ]$/.test(key) && board[currentRow].length < wordLength) {
         const newBoard = [...board];
         newBoard[currentRow] += key;
@@ -37,44 +69,64 @@ function Lovdle() {
       if (e.key === 'Enter' && board[currentRow].length === wordLength) {
         if (board[currentRow] === solution) {
           setIsFinished(true);
-          alert("¡Increíble! ❤️");
+          setGameStatus("won");
+          saveWin(solution);
         } else if (currentRow < 5) {
           setCurrentRow(currentRow + 1);
         } else {
           setIsFinished(true);
-          alert(`Casi... la palabra era ${solution}`);
+          setGameStatus("lost");
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [board, currentRow, solution, wordLength, isFinished]);
+  }, [board, currentRow, solution, isFinished]);
 
   return (
-    <div className="font-dynapuff min-h-screen bg-fuchsia-50 text-gray-900 flex flex-col items-center justify-center p-4">
-      <h1 className="text-6xl md:text-8xl font-bold mb-10 text-fuchsia-400 drop-shadow-md">LOVDLE</h1>
+    <div className="font-dynapuff min-h-screen bg-fuchsia-50 text-gray-900 flex flex-col items-center justify-start">
+      {/* Header compacto */}
+      <header className="w-full flex items-center justify-center bg-fuchsia-100 py-2 mb-4 shadow-sm">
+        <h1 className="text-2xl md:text-3xl font-bold text-fuchsia-500 tracking-wide">LOVDLE</h1>
+      </header>
 
-      {/* Contenedor del tablero */}
-      <div className="flex flex-col gap-3">
+      {/* Tablero y controles */}
+      <div className="flex flex-col gap-3 mb-10">
         {board.map((word, i) => (
-          <Row 
-            key={i} 
-            word={word} 
-            length={wordLength} 
+          <Row
+            key={i}
+            word={word}
+            length={solution.length || 0}
             isSubmitted={i < currentRow}
             solution={solution}
           />
         ))}
       </div>
+
+      {/* Botón de Jugar de Nuevo (Solo aparece al terminar) */}
+      {isFinished && (
+        <div className="flex flex-col items-center gap-4 animate-bounce">
+          <p className="text-2xl font-bold text-fuchsia-600">
+            {gameStatus === "won" ? "¡Palabra acertada! ❤️" : `La palabra era: ${solution}`}
+          </p>
+          <button
+            onClick={resetGame}
+            className="group relative flex items-center gap-2 bg-fuchsia-400 hover:bg-fuchsia-500 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg transition-all active:scale-95"
+          >
+            JUGAR DE NUEVO
+            <span className="text-2xl group-hover:animate-pulse">✨</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 function Row({ word, length, isSubmitted, solution }) {
   // Creamos un array vacío con la longitud exacta de la palabra elegida
-  const cells = Array(length).fill(""); 
-  
+  const cells = Array(length).fill("");
+
   return (
     <div className="flex gap-2 md:gap-3 justify-center">
       {cells.map((_, i) => {
