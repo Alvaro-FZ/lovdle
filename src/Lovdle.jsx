@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import HeartRain from './HeartRain';
 
-const WORDS = ["AMOR", "BESOS", "PASION", "CORAZON", "CARACOLI", "DULCE", "MIEL", "ETERNO", "CARIÑO", "POESIA"];
+const WORDS = ["CARACOLI", "LARITA"];
 
 function Lovdle() {
   const [solution, setSolution] = useState("");
@@ -85,10 +86,9 @@ function Lovdle() {
   }, [board, currentRow, solution, isFinished]);
 
   return (
-    <div className="font-dynapuff min-h-screen bg-fuchsia-50 text-gray-900 flex flex-col items-center justify-start">
-      {/* Header compacto */}
-      <header className="w-full flex items-center justify-center bg-fuchsia-100 py-2 mb-22 shadow-sm">
-        <h1 className="text-2xl md:text-3xl font-bold text-fuchsia-500 tracking-wide">LOVDLE</h1>
+    <div className="relative font-dynapuff min-h-screen text-rose-900 flex flex-col items-center justify-start overflow-hidden">      <HeartRain />
+      <header className="w-full flex items-center justify-center bg-rose-100 py-2 mb-6 shadow-sm z-10">
+        <h1 className="text-2xl md:text-3xl font-bold text-rose-500 tracking-wide">LOVDLE</h1>
       </header>
 
       {/* Tablero y controles */}
@@ -98,7 +98,8 @@ function Lovdle() {
             key={i}
             word={word}
             length={solution.length || 0}
-            isSubmitted={i < currentRow}
+            // CAMBIO: Si la fila ya pasó, O si es la fila actual y ya terminó el juego
+            isSubmitted={i < currentRow || (i === currentRow && isFinished)}
             solution={solution}
           />
         ))}
@@ -106,13 +107,13 @@ function Lovdle() {
 
       {/* Botón de Jugar de Nuevo (Solo aparece al terminar) */}
       {isFinished && (
-        <div className="flex flex-col items-center gap-4 animate-bounce">
-          <p className="text-2xl font-bold text-fuchsia-600">
+        <div className="flex flex-col items-center gap-4 animate-soft-float">
+          <p className="text-2xl font-bold text-rose-600">
             {gameStatus === "won" ? "¡Palabra acertada! ❤️" : `La palabra era: ${solution}`}
           </p>
           <button
             onClick={resetGame}
-            className="group relative flex items-center gap-2 bg-fuchsia-400 hover:bg-fuchsia-500 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg transition-all active:scale-95"
+            className="group relative flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg transition-all active:scale-95"
           >
             JUGAR DE NUEVO
             <span className="text-2xl group-hover:animate-pulse">✨</span>
@@ -148,10 +149,10 @@ function Row({ word, length, isSubmitted, solution }) {
 function Cell({ letter, status }) {
   // Añadimos colores para el borde extra (ring) en cada estado
   const styles = {
-    empty: "bg-white border-slate-300 ring-slate-200 text-gray-400",
-    correct: "bg-green-400 border-green-600 ring-green-200 text-white",
-    present: "bg-yellow-400 border-yellow-600 ring-yellow-200 text-white",
-    absent: "bg-slate-400 border-slate-500 ring-slate-300 text-white",
+    empty: "bg-white border-rose-200 ring-rose-100 text-rose-300",
+    correct: "bg-pink-300 border-pink-500 ring-pink-200 text-white",
+    present: "bg-rose-200 border-rose-300 ring-rose-100 text-white",
+    absent: "bg-slate-200 border-slate-300 ring-slate-100 text-white animate-shake",
   };
 
   const currentStyle = styles[status] || styles.empty;
