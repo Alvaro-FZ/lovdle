@@ -4,6 +4,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Optimizaciones para móviles */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
 @font-face {
   font-family: 'Winky Sans';
   src: url('/fonts/Winky_Sans/static/WinkySans-Regular.ttf') format('truetype');
