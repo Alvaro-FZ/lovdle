@@ -86,13 +86,13 @@ function Lovdle() {
   }, [board, currentRow, solution, isFinished]);
 
   return (
-    <div className="relative font-dynapuff min-h-screen text-rose-900 flex flex-col items-center justify-start overflow-hidden">      <HeartRain />
-      <header className="w-full flex items-center justify-center bg-rose-100 py-2 mb-6 shadow-sm z-10">
-        <h1 className="text-2xl md:text-3xl font-bold text-rose-500 tracking-wide">LOVDLE</h1>
+    <div className="relative font-dynapuff min-h-screen text-rose-900 flex flex-col items-center justify-start overflow-hidden px-4 sm:px-6">      <HeartRain />
+      <header className="w-full flex items-center justify-center bg-rose-100 py-3 sm:py-4 mb-4 sm:mb-6 shadow-sm z-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-500 tracking-wide">LOVDLE</h1>
       </header>
 
       {/* Tablero y controles */}
-      <div className="flex flex-col gap-3 mb-10">
+      <div className="flex flex-col gap-2 sm:gap-3 mb-6 sm:mb-10">
         {board.map((word, i) => (
           <Row
             key={i}
@@ -107,16 +107,16 @@ function Lovdle() {
 
       {/* Botón de Jugar de Nuevo (Solo aparece al terminar) */}
       {isFinished && (
-        <div className="flex flex-col items-center gap-4 animate-soft-float">
-          <p className="text-2xl font-bold text-rose-600">
+        <div className="flex flex-col items-center gap-4 animate-soft-float px-4">
+          <p className="text-lg sm:text-xl md:text-2xl font-bold text-rose-600 text-center leading-relaxed">
             {gameStatus === "won" ? "¡Palabra acertada! ❤️" : `La palabra era: ${solution}`}
           </p>
           <button
             onClick={resetGame}
-            className="group relative flex items-center gap-2 bg-rose-400 hover:bg-rose-500 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg transition-all active:scale-95"
+            className="group relative flex items-center gap-2 bg-rose-400 hover:bg-rose-500 active:bg-rose-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-lg sm:text-xl shadow-lg transition-all active:scale-95 touch-manipulation"
           >
             JUGAR DE NUEVO
-            <span className="text-2xl group-hover:animate-pulse">✨</span>
+            <span className="text-xl sm:text-2xl group-hover:animate-pulse">✨</span>
           </button>
         </div>
       )}
@@ -129,7 +129,7 @@ function Row({ word, length, isSubmitted, solution }) {
   const cells = Array(length).fill("");
 
   return (
-    <div className="flex gap-2 md:gap-3 justify-center">
+    <div className="flex gap-1 sm:gap-2 md:gap-3 justify-center">
       {cells.map((_, i) => {
         const letter = word[i] || "";
         let status = "empty";
@@ -159,23 +159,27 @@ function Cell({ letter, status }) {
 
   return (
     <div className={`
-      /* Tamaño dinámico */
-      w-12 h-16 md:w-16 md:h-20 
+      /* Tamaño dinámico y responsivo */
+      w-10 h-12 
+      xs:w-11 xs:h-14
+      sm:w-12 sm:h-16 
+      md:w-14 md:h-16
+      lg:w-16 lg:h-18
       flex items-center justify-center
-      text-2xl md:text-4xl font-bold uppercase font-winky
+      text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold uppercase font-winky
       
       /* Aplicación de Estilos */
       ${currentStyle}
       
-      /* Bordes y Profundidad */
-      rounded-2xl 
-      border-2       /* Borde lateral y superior fino */
-      border-b-8     /* El "suelo" de la tecla (profundidad) */
-      ring-4         /* ESTE ES EL BORDE EXTRA EXTERIOR */
+      /* Bordes y Profundidad responsivos */
+      rounded-xl sm:rounded-2xl
+      border border-2 sm:border-2       /* Borde lateral y superior */
+      border-b-4 sm:border-b-6 md:border-b-8     /* El "suelo" de la tecla */
+      ring-2 sm:ring-3 md:ring-4         /* Borde extra exterior */
       
       /* Animaciones y Transiciones */
       transition-all duration-150
-      ${letter && status === "empty" ? "scale-105 border-b-4 translate-y-1 text-gray-800 ring-fuchsia-200" : ""}
+      ${letter && status === "empty" ? "scale-105 border-b-2 sm:border-b-4 translate-y-0.5 sm:translate-y-1 text-gray-800 ring-fuchsia-200" : ""}
     `}>
       {letter}
     </div>
