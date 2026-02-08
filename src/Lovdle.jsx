@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import HeartRain from './HeartRain';
 
-const WORDS = ["AMOR", "CORAZON", "CARIÑO", "PASION", "ROMANCE", "AFECTO", "TIERNO", "ENAMORAR", "QUERER", "DESEO"];
+const WORDS = ["CARACOLI"];
 
 function Lovdle() {
   const [solution, setSolution] = useState("");
@@ -123,27 +123,49 @@ function Keyboard({ onKey, letterStatuses }) {
     ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "BACKSPACE"]
   ];
 
+  // 1. Actualizamos los estilos para incluir el 'ring' (anillo)
+  // Usamos los mismos colores que en el componente Cell
   const getStyle = (key) => {
     const status = letterStatuses[key];
-    if (status === "correct") return "bg-pink-300 border-pink-500 text-white";
-    if (status === "present") return "bg-rose-200 border-rose-300 text-white";
-    if (status === "absent") return "bg-slate-300 border-slate-400 text-slate-500";
-    return "bg-white border-rose-200 text-rose-400";
+    if (status === "correct") return "bg-pink-300 border-pink-500 ring-pink-200 text-white";
+    if (status === "present") return "bg-rose-200 border-rose-300 ring-rose-100 text-white";
+    if (status === "absent") return "bg-slate-200 border-slate-300 ring-slate-100 text-slate-400";
+    // Estado por defecto (tecla no usada)
+    return "bg-white border-rose-200 ring-rose-100 text-rose-400 hover:bg-rose-50";
   };
 
   return (
-    <div className="w-full max-w-2xl px-2 z-10">
+    // Añadí un poco más de padding horizontal (px-4) al contenedor
+    <div className="w-full max-w-2xl px-4 z-10 mb-4">
       {rows.map((row, i) => (
-        <div key={i} className="flex justify-center gap-1 mb-2">
+        // Aumenté ligeramente el gap entre teclas
+        <div key={i} className="flex justify-center gap-1.5 mb-2">
           {row.map((key) => (
             <button
               key={key}
               onClick={() => onKey(key)}
               className={`
+                /* Aplicamos los colores dinámicos (bg, border, ring, text) */
                 ${getStyle(key)}
-                ${key.length > 1 ? 'px-2 md:px-4 text-xs' : 'w-8 md:w-12 text-sm'}
-                h-12 md:h-14 flex items-center justify-center font-bold rounded-xl border-b-4 
-                active:border-b-0 active:translate-y-1 transition-all uppercase
+                
+                /* Tamaños adaptativos */
+                ${key.length > 1 ? 'px-2 md:px-4 text-xs' : 'w-8 md:w-11 text-sm'}
+                h-12 md:h-14 
+                
+                /* Flex y Tipografía */
+                flex items-center justify-center font-bold uppercase font-winky
+                
+                /* --- ESTRUCTURA 3D TIPO "FICHA" --- */
+                rounded-xl      /* Bordes redondeados */
+                border-2        /* Borde fino alrededor */
+                border-b-4      /* Profundidad inferior (la "sombra" de la tecla) */
+                ring-2          /* El anillo exterior (más fino que en las celdas grandes) */
+                
+                /* Animación al pulsar */
+                transition-all
+                active:border-b-0 
+                active:translate-y-1 
+                active:ring-0   /* El anillo desaparece al hundir la tecla */
               `}
             >
               {key === "BACKSPACE" ? "⌫" : key}
