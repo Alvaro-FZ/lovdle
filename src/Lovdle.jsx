@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import HeartRain from './HeartRain';
 
-const WORDS = ["CARACOLI"];
+const WORDS = ["AMOR", "CARACOLI", "CORAZON", "ROMANCE", "ENAMORAR", "CARIÑO", "AFECTO", "PASION", "DESEO", "TERNURA", "ADICCION", "ALMA", "CONEXION", "AMISTAD", "LEALTAD", "CUPIDO", "BESOS"];
 
 function Lovdle() {
   const [solution, setSolution] = useState("");
