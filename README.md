@@ -1,29 +1,29 @@
-# 💖 Lovdle - Un Wordle Lleno de Amor
+# 💖 Lovdle - A Wordle Full of Love
 
-**Lovdle** es un juego de palabras inspirado en Wordle, diseñado con una estética romántica y jugabilidad extendida. Los jugadores deben adivinar palabras relacionadas con el afecto y el amor, gestionando un sistema de vidas persistente y disfrutando de una interfaz visualmente rica.
+**Lovdle** is a romance-themed word game inspired by Wordle. It features a charming aesthetic, a persistent life system, and a vocabulary centered around affection and love.
 
-## ✨ Características Principales
+## ✨ Key Features
 
-- **Jugabilidad Estilo Wordle**: 6 intentos para adivinar la palabra oculta.
-- **Sistema de Vidas (Corazones)**: Cuentas con 5 vidas que se restan al fallar una palabra completa. 
-- **Persistencia con LocalStorage**: Tanto las vidas como las palabras ya acertadas se guardan en el navegador. Si cierras la página, tu progreso se mantiene.
-- **Interfaz Animada**:
-  - Lluvia de corazones en el fondo.
-  - Animación de "corazón roto" al perder una vida.
-  - Teclado virtual personalizado con efecto 3D y anillos de color.
-- **Optimización Mobile**: Diseñado específicamente para funcionar a la perfección en dispositivos como el **Xiaomi Redmi Note 10 Pro** y similares.
-- **Modal de Resultados**: Un diálogo emergente elegante que muestra la solución y permite continuar la racha.
+- **Wordle-Style Gameplay**: You have 6 attempts to guess the hidden word.
+- **Life System (Hearts)**: You start with 5 lives. Failing a full word puzzle (using all 6 rows) costs you one life.
+- **Persistent Progress**: Uses `LocalStorage` to save your remaining lives and the list of words you've already guessed. Your progress stays even if you refresh or close the tab.
+- **Rich Visual Interface**:
+  - Animated heart rain background.
+  - Custom "heart-break" animation when losing a life.
+  - 3D-style virtual keyboard with color-coded feedback rings.
+- **Mobile Optimized**: Tailored UI for a perfect experience on devices like the **Xiaomi Redmi Note 10 Pro**.
+- **Result Modal**: An elegant popup showing the solution and a "Next Word" action to keep the streak going.
 
-## 🚀 Tecnologías Utilizadas
+## 🚀 Tech Stack
 
 - [React](https://react.dev/)
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Lucide React / SVGs Personalizados]
+- [SVGs & Custom Animations]
 
-## 🛠️ Instalación y Configuración
+## 🛠️ Setup & Installation
 
-1. **Clonar el repositorio**:
+1. **Clone the repository**:
    ```bash
-   git clone <tu-url-de-repo>
+   git clone <your-repo-url>
    cd lovdle
