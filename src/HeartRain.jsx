@@ -18,7 +18,7 @@ const HeartIcon = ({ className, style, onIteration }) => (
 );
 
 const HeartRain = () => {
-    const COUNT = 9;
+    const COUNT = 22;
 
     // Usamos un objeto para rastrear la posición horizontal individual de cada corazón
     const [positions, setPositions] = useState(() =>
@@ -28,8 +28,8 @@ const HeartRain = () => {
     const heartsConfig = useMemo(() => {
         return Array.from({ length: COUNT }).map((_, i) => ({
             id: i,
-            size: Math.floor(Math.random() * 150) + 500 + 'px',
-            duration: Math.floor(Math.random() * 10) + 20 + 's',
+            size: Math.floor(Math.random() * 150) + 50 + 'px',
+            duration: Math.floor(Math.random() * 10) + 10 + 's',
             delay: Math.random() * -20 + 's',
         }));
     }, []);
@@ -51,7 +51,7 @@ const HeartRain = () => {
                     className="absolute animate-fall text-rose-200"
                     onIteration={() => handleIteration(i)}
                     style={{
-                        top: '-600px', // Ajustado para que los corazones gigantes no "aparezcan" de golpe
+                        top: '-100px', // Ajustado para que los corazones gigantes no "aparezcan" de golpe
                         left: positions[i],
                         width: config.size,
                         height: config.size,
