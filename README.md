@@ -1,6 +1,6 @@
 # 💖 Lovdle - A Wordle Full of Love
 
-**Lovdle** is a romance-themed word game inspired by Wordle. It features a charming aesthetic, a persistent life system, and a vocabulary centered around affection and love.
+**Lovdle** is a romance-themed word game inspired by Wordle. It features a charming aesthetic, a persistent life system, all under an affection and love context.
 
 ## ✨ Key Features
 
@@ -11,7 +11,7 @@
   - Animated heart rain background.
   - Custom "heart-break" animation when losing a life.
   - 3D-style virtual keyboard with color-coded feedback rings.
-- **Mobile Optimized**: Tailored UI for a perfect experience on devices like the **Xiaomi Redmi Note 10 Pro**.
+- **Mobile Optimized**: Tailored UI for a perfect experience on mobile devices.
 - **Result Modal**: An elegant popup showing the solution and a "Next Word" action to keep the streak going.
 
 ## 🚀 Tech Stack
