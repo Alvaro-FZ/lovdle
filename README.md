@@ -1,16 +1,29 @@
-# React + Vite
+# 💖 Lovdle - Un Wordle Lleno de Amor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Lovdle** es un juego de palabras inspirado en Wordle, diseñado con una estética romántica y jugabilidad extendida. Los jugadores deben adivinar palabras relacionadas con el afecto y el amor, gestionando un sistema de vidas persistente y disfrutando de una interfaz visualmente rica.
 
-Currently, two official plugins are available:
+## ✨ Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Jugabilidad Estilo Wordle**: 6 intentos para adivinar la palabra oculta.
+- **Sistema de Vidas (Corazones)**: Cuentas con 5 vidas que se restan al fallar una palabra completa. 
+- **Persistencia con LocalStorage**: Tanto las vidas como las palabras ya acertadas se guardan en el navegador. Si cierras la página, tu progreso se mantiene.
+- **Interfaz Animada**:
+  - Lluvia de corazones en el fondo.
+  - Animación de "corazón roto" al perder una vida.
+  - Teclado virtual personalizado con efecto 3D y anillos de color.
+- **Optimización Mobile**: Diseñado específicamente para funcionar a la perfección en dispositivos como el **Xiaomi Redmi Note 10 Pro** y similares.
+- **Modal de Resultados**: Un diálogo emergente elegante que muestra la solución y permite continuar la racha.
 
-## React Compiler
+## 🚀 Tecnologías Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Lucide React / SVGs Personalizados]
 
-## Expanding the ESLint configuration
+## 🛠️ Instalación y Configuración
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clonar el repositorio**:
+   ```bash
+   git clone <tu-url-de-repo>
+   cd lovdle
