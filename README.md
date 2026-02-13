@@ -1,16 +1,29 @@
-# React + Vite
+# 💖 Lovdle - A Wordle Full of Love
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Lovdle** is a romance-themed word game inspired by Wordle. It features a charming aesthetic, a persistent life system, all under an affection and love context.
 
-Currently, two official plugins are available:
+## ✨ Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Wordle-Style Gameplay**: You have 6 attempts to guess the hidden word.
+- **Life System (Hearts)**: You start with 5 lives. Failing a full word puzzle (using all 6 rows) costs you one life.
+- **Persistent Progress**: Uses `LocalStorage` to save your remaining lives and the list of words you've already guessed. Your progress stays even if you refresh or close the tab.
+- **Rich Visual Interface**:
+  - Animated heart rain background.
+  - Custom "heart-break" animation when losing a life.
+  - 3D-style virtual keyboard with color-coded feedback rings.
+- **Mobile Optimized**: Tailored UI for a perfect experience on mobile devices.
+- **Result Modal**: An elegant popup showing the solution and a "Next Word" action to keep the streak going.
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [SVGs & Custom Animations]
 
-## Expanding the ESLint configuration
+## 🛠️ Setup & Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Alvaro-FZ/lovdle.git
+   cd lovdle
