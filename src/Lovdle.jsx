@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import HeartRain from './HeartRain';
 
-const WORDS = ["AMORCITO", "CARACOLI", "BONITA", "LINDA", "PATO", "RA", "BESITO", "HERMOSA"];
+const WORDS = ["AMORCITO", "CARACOLI", "BONITA", "LINDA", "PATO", "RAYITO", "BESITO", "HERMOSA"];
 
 // --- SUBCOMPONENTE: CORAZÓN DE VIDA ---
 function HeartLife({ isLost }) {
