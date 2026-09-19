@@ -292,7 +292,7 @@ function ResultModal({ isOpen, status, solution, onReset }) {
         
         {isWon && (
           /* 2. Aumentado de h-48 (12rem) a h-[28rem] (unos 450px) para ver mucha más imagen */
-          <div className="my-4 overflow-hidden rounded-2xl border-4 border-rose-100 shadow-inner bg-rose-50 h-[28rem]">
+          <div className="my-4 overflow-hidden rounded-2xl border-4 border-rose-100 shadow-inner bg-rose-50 h-112">
             <img 
               src={`/Lara/${solution.img}`} 
               alt="Sorpresa" 
