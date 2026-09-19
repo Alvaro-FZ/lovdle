@@ -34,7 +34,7 @@ function HeartLife({ isLost }) {
   );
 }
 
-export default function Lovdle() {
+export default function Lovdle({ onExit }) {
   const [solution, setSolution] = useState(null);
   const [board, setBoard] = useState(Array(6).fill(""));
   const [currentRow, setCurrentRow] = useState(0);
@@ -145,7 +145,15 @@ export default function Lovdle() {
   return (
     <div className="relative font-dynapuff min-h-screen text-rose-900 flex flex-col items-center justify-between overflow-hidden pb-8">
       <HeartRain />
-      <header className="w-full flex items-center justify-center bg-rose-100/80 backdrop-blur-sm py-2 mb-6 shadow-sm z-10">
+      <header className="relative w-full flex items-center justify-center bg-rose-100/80 backdrop-blur-sm py-2 mb-6 shadow-sm z-10">
+        {onExit && (
+          <button
+            onClick={onExit}
+            className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-full bg-white/90 border border-rose-200 text-rose-500 font-bold text-sm shadow-sm hover:bg-rose-50 hover:border-rose-300 transition-all z-20"
+          >
+            ← MENÚ
+          </button>
+        )}
         <h1 className="text-2xl md:text-3xl font-bold text-rose-500 tracking-wide">LOVDLE</h1>
       </header>
 
