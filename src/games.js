@@ -17,7 +17,7 @@ export const GAMES = [
     tagline: 'Ajedrez gatuno',
     description: 'Ajedrez para caracolis.',
     emoji: '🐱',
-    gradient: 'linear-gradient(135deg, #fdba74 0%, #f97316 100%)',
+    gradient: 'linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%)',
     component: CatChess,
   },
 ];
