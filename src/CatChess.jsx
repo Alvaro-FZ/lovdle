@@ -250,23 +250,23 @@ export default function CatChess({ onExit }) {
       : { text: `✅ Fuerza: ${difficulty.label}`, tone: 'text-emerald-700' };
 
   return (
-    <div className="flex min-h-screen flex-col bg-linear-to-br from-sky-100 via-sky-50 to-blue-50 font-bento-sans">
-      <header className="z-10 flex w-full flex-wrap items-center justify-between gap-3 border-b border-sky-200/70 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
+    <div className="flex min-h-screen flex-col bg-linear-to-br from-celeste-100 via-celeste-50 to-celeste-200 font-bento-sans">
+      <header className="z-10 flex w-full flex-wrap items-center justify-between gap-3 border-b border-celeste-200/70 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
         <button
           onClick={onExit}
-          className="rounded-xl border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-sky-700 transition hover:-translate-x-0.5 hover:bg-sky-50"
+          className="rounded-xl border border-celeste-200 bg-white px-4 py-2 text-sm font-semibold text-celeste-700 transition hover:-translate-x-0.5 hover:bg-celeste-50"
         >
           ← Volver al menú
         </button>
-        <h1 className="font-bento-display text-xl font-bold tracking-wide text-sky-900 sm:text-2xl md:text-3xl">
-          🐱 AJEDREZ DE GATOS
+        <h1 className="font-bento-display text-xl font-bold tracking-wide text-celeste-900 sm:text-2xl md:text-3xl">
+          GATODREZ 🐱
         </h1>
-        <div className="hidden text-sm font-semibold text-sky-700 sm:block">{turnLabel}</div>
+        <div className="hidden text-sm font-semibold text-celeste-700 sm:block">{turnLabel}</div>
       </header>
 
       <main className="flex w-full flex-1 flex-col items-center justify-center gap-6 px-3 py-5 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
         <div className="flex flex-col items-center gap-3">
-          <div className="chess-board relative grid grid-cols-8 overflow-hidden rounded-2xl border-2 border-sky-400/80 shadow-2xl">
+          <div className="chess-board relative grid grid-cols-8 overflow-hidden rounded-2xl border-2 border-celeste-500/80 shadow-2xl">
             {board.map((row, r) =>
               row.map((cell, c) => {
                 const square = rcToSquare(r, c);
@@ -285,10 +285,10 @@ export default function CatChess({ onExit }) {
                     onClick={() => onSquare(square)}
                     aria-label={square}
                     className={`relative flex aspect-square items-center justify-center transition-colors duration-150 ${
-                      dark ? 'bg-[#8ad0f5]' : 'bg-[#eef8fe]'
+                      dark ? 'bg-celeste-400' : 'bg-celeste-50'
                     } ${isInteractive ? 'cursor-pointer' : 'cursor-default'}`}
                   >
-                    {isLast && <span className="pointer-events-none absolute inset-0 bg-sky-300/50" />}
+                    {isLast && <span className="pointer-events-none absolute inset-0 bg-celeste-300/50" />}
                     {isCheck && <span className="pointer-events-none absolute inset-0 bg-red-500/45" />}
 
                     <div
@@ -301,22 +301,22 @@ export default function CatChess({ onExit }) {
                     </div>
 
                     {isSelected && (
-                      <span className="pointer-events-none absolute inset-0 z-20 ring-4 ring-inset ring-sky-500/80" />
+                      <span className="pointer-events-none absolute inset-0 z-20 ring-4 ring-inset ring-celeste-500/80" />
                     )}
                     {target && !target.captured && (
-                      <span className="target-dot pointer-events-none absolute z-20 h-[26%] w-[26%] rounded-full bg-sky-600/75 shadow" />
+                      <span className="target-dot pointer-events-none absolute z-20 h-[26%] w-[26%] rounded-full bg-celeste-600/75 shadow" />
                     )}
                     {target && target.captured && (
-                      <span className="pointer-events-none absolute inset-[6%] z-20 rounded-full ring-4 ring-sky-500/80" />
+                      <span className="pointer-events-none absolute inset-[6%] z-20 rounded-full ring-4 ring-celeste-500/80" />
                     )}
 
                     {c === 0 && (
-                      <span className="pointer-events-none absolute left-0.5 top-0.5 text-[9px] font-bold text-slate-700/40 sm:text-[10px]">
+                      <span className="pointer-events-none absolute left-0.5 top-0.5 text-[9px] font-bold text-[#1f648c]/40 sm:text-[10px]">
                         {8 - r}
                       </span>
                     )}
                     {r === 7 && (
-                      <span className="pointer-events-none absolute bottom-0.5 right-0.5 text-[9px] font-bold text-slate-700/40 sm:text-[10px]">
+                      <span className="pointer-events-none absolute bottom-0.5 right-0.5 text-[9px] font-bold text-[#1f648c]/40 sm:text-[10px]">
                         {FILES[c]}
                       </span>
                     )}
@@ -332,14 +332,14 @@ export default function CatChess({ onExit }) {
           </div>
         </div>
 
-        <aside className="w-full max-w-md space-y-4 rounded-2xl border border-sky-200 bg-white/85 p-4 shadow-lg backdrop-blur lg:w-72">
+        <aside className="w-full max-w-md space-y-4 rounded-2xl border border-celeste-200 bg-white/85 p-4 shadow-lg backdrop-blur lg:w-72">
           <div className="flex items-center justify-between gap-2">
             <span className="text-sm font-semibold text-slate-700">{turnLabel}</span>
-            {aiTurn && <span className="h-3 w-3 animate-ping rounded-full bg-sky-600" />}
+            {aiTurn && <span className="h-3 w-3 animate-ping rounded-full bg-celeste-600" />}
           </div>
           <p className={`text-xs font-medium ${engineStatus.tone}`}>{engineStatus.text}</p>
 
-          <div className="rounded-xl bg-sky-50 p-1">
+          <div className="rounded-xl bg-celeste-50 p-1">
             <div className="grid grid-cols-2 gap-1">
               <button
                 type="button"
@@ -348,7 +348,7 @@ export default function CatChess({ onExit }) {
                   reset();
                 }}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  vsAI ? 'bg-sky-600 text-white shadow' : 'text-sky-700 hover:bg-sky-100'
+                  vsAI ? 'bg-celeste-600 text-white shadow' : 'text-celeste-700 hover:bg-celeste-100'
                 }`}
               >
                 🐱 vs IA
@@ -360,7 +360,7 @@ export default function CatChess({ onExit }) {
                   reset();
                 }}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  !vsAI ? 'bg-sky-600 text-white shadow' : 'text-sky-700 hover:bg-sky-100'
+                  !vsAI ? 'bg-celeste-600 text-white shadow' : 'text-celeste-700 hover:bg-celeste-100'
                 }`}
               >
                 👥 2 jugadores
@@ -382,8 +382,8 @@ export default function CatChess({ onExit }) {
                       title={level.desc}
                       className={`flex flex-col items-center rounded-xl border px-2 py-2 text-xs font-semibold transition ${
                         active
-                          ? 'border-sky-400 bg-sky-600 text-white shadow-md'
-                          : 'border-sky-200 bg-white text-sky-700 hover:-translate-y-0.5 hover:shadow'
+                          ? 'border-celeste-400 bg-celeste-600 text-white shadow-md'
+                          : 'border-celeste-200 bg-white text-celeste-700 hover:-translate-y-0.5 hover:shadow'
                       }`}
                     >
                       <span className="text-lg leading-none">{level.emoji}</span>
@@ -404,7 +404,7 @@ export default function CatChess({ onExit }) {
           <button
             type="button"
             onClick={reset}
-            className="w-full rounded-xl bg-sky-600 px-4 py-2.5 font-semibold text-white shadow transition hover:-translate-y-0.5 hover:bg-sky-700"
+            className="w-full rounded-xl bg-celeste-600 px-4 py-2.5 font-semibold text-white shadow transition hover:-translate-y-0.5 hover:bg-celeste-700"
           >
             Reiniciar partida
           </button>
@@ -413,22 +413,22 @@ export default function CatChess({ onExit }) {
 
       {gameOver && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="animate-modal-pop w-full max-w-sm rounded-2xl border border-sky-200 bg-white p-6 text-center shadow-2xl">
+          <div className="animate-modal-pop w-full max-w-sm rounded-2xl border border-celeste-200 bg-white p-6 text-center shadow-2xl">
             <p className="text-5xl">{gameOver.icon}</p>
-            <h2 className="mt-2 text-2xl font-bold text-sky-900">{gameOver.title}</h2>
+            <h2 className="mt-2 text-2xl font-bold text-celeste-900">{gameOver.title}</h2>
             <p className="mt-1 text-sm text-slate-600">{gameOver.subtitle}</p>
             <div className="mt-5 flex flex-col gap-2 sm:flex-row">
               <button
                 type="button"
                 onClick={reset}
-                className="flex-1 rounded-xl bg-sky-600 px-4 py-2.5 font-semibold text-white shadow transition hover:bg-sky-700"
+                className="flex-1 rounded-xl bg-celeste-600 px-4 py-2.5 font-semibold text-white shadow transition hover:bg-celeste-700"
               >
                 Jugar otra vez
               </button>
               <button
                 type="button"
                 onClick={onExit}
-                className="flex-1 rounded-xl border border-sky-200 bg-white px-4 py-2.5 font-semibold text-sky-700 transition hover:bg-sky-50"
+                className="flex-1 rounded-xl border border-celeste-200 bg-white px-4 py-2.5 font-semibold text-celeste-700 transition hover:bg-celeste-50"
               >
                 Menú
               </button>

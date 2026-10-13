@@ -13,11 +13,11 @@ export const GAMES = [
   },
   {
     id: 'catchess',
-    title: 'CAT CHESS',
-    tagline: 'Ajedrez gatuno',
-    description: 'Ajedrez para caracolis.',
+    title: 'MICHIDREZ',
+    tagline: 'EL NOMBRE LO DICE TODO',
+    description: 'Ajedrez para jugar con tus caracolis favoritos o contra la IA.',
     emoji: '🐱',
-    gradient: 'linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%)',
+    gradient: 'linear-gradient(135deg, #8ad0f5 0%, #3f9fd4 100%)',
     component: CatChess,
   },
 ];
