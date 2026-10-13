@@ -32,7 +32,7 @@ function PieceImg({ piece, className = '' }) {
       alt={`${piece.color === 'w' ? 'blanca' : 'negra'} ${piece.type}`}
       draggable={false}
       className={`pointer-events-none h-full w-full select-none object-contain ${
-        piece.color === 'w' ? 'piece-white' : 'piece-black'
+        piece.color === 'w' ? 'piece-white' : 'piece-black max-sm:rotate-180'
       } ${className}`}
     />
   );
@@ -250,23 +250,23 @@ export default function CatChess({ onExit }) {
       : { text: `✅ Fuerza: ${difficulty.label}`, tone: 'text-emerald-700' };
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-amber-100 via-orange-50 to-rose-50 font-bento-sans">
-      <header className="z-10 flex w-full flex-wrap items-center justify-between gap-3 border-b border-orange-200/70 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
+    <div className="flex min-h-screen flex-col bg-linear-to-br from-cyan-100 via-sky-50 to-blue-50 font-bento-sans">
+      <header className="z-10 flex w-full flex-wrap items-center justify-between gap-3 border-b border-cyan-200/70 bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
         <button
           onClick={onExit}
-          className="rounded-xl border border-orange-200 bg-white px-4 py-2 text-sm font-semibold text-orange-700 transition hover:-translate-x-0.5 hover:bg-orange-50"
+          className="rounded-xl border border-cyan-200 bg-white px-4 py-2 text-sm font-semibold text-cyan-700 transition hover:-translate-x-0.5 hover:bg-cyan-50"
         >
           ← Volver al menú
         </button>
-        <h1 className="font-bento-display text-xl font-bold tracking-wide text-orange-800 sm:text-2xl md:text-3xl">
+        <h1 className="font-bento-display text-xl font-bold tracking-wide text-cyan-900 sm:text-2xl md:text-3xl">
           🐱 AJEDREZ DE GATOS
         </h1>
-        <div className="hidden text-sm font-semibold text-orange-700 sm:block">{turnLabel}</div>
+        <div className="hidden text-sm font-semibold text-cyan-700 sm:block">{turnLabel}</div>
       </header>
 
       <main className="flex w-full flex-1 flex-col items-center justify-center gap-6 px-3 py-5 lg:flex-row lg:items-start lg:justify-center lg:gap-8">
         <div className="flex flex-col items-center gap-3">
-          <div className="chess-board relative grid grid-cols-8 overflow-hidden rounded-2xl border-4 border-orange-300/80 shadow-2xl">
+          <div className="chess-board relative grid grid-cols-8 overflow-hidden rounded-2xl border-2 border-cyan-400/80 shadow-2xl">
             {board.map((row, r) =>
               row.map((cell, c) => {
                 const square = rcToSquare(r, c);
@@ -285,10 +285,10 @@ export default function CatChess({ onExit }) {
                     onClick={() => onSquare(square)}
                     aria-label={square}
                     className={`relative flex aspect-square items-center justify-center transition-colors duration-150 ${
-                      dark ? 'bg-[#d9a96b]' : 'bg-[#f8ecd5]'
+                      dark ? 'bg-[#4aa3c7]' : 'bg-[#e8f6fb]'
                     } ${isInteractive ? 'cursor-pointer' : 'cursor-default'}`}
                   >
-                    {isLast && <span className="pointer-events-none absolute inset-0 bg-yellow-300/35" />}
+                    {isLast && <span className="pointer-events-none absolute inset-0 bg-cyan-300/50" />}
                     {isCheck && <span className="pointer-events-none absolute inset-0 bg-red-500/45" />}
 
                     <div
@@ -301,22 +301,22 @@ export default function CatChess({ onExit }) {
                     </div>
 
                     {isSelected && (
-                      <span className="pointer-events-none absolute inset-0 z-20 ring-4 ring-inset ring-blue-500/80" />
+                      <span className="pointer-events-none absolute inset-0 z-20 ring-4 ring-inset ring-cyan-500/80" />
                     )}
                     {target && !target.captured && (
-                      <span className="target-dot pointer-events-none absolute z-20 h-[26%] w-[26%] rounded-full bg-blue-600/70 shadow" />
+                      <span className="target-dot pointer-events-none absolute z-20 h-[26%] w-[26%] rounded-full bg-cyan-600/75 shadow" />
                     )}
                     {target && target.captured && (
-                      <span className="pointer-events-none absolute inset-[6%] z-20 rounded-full ring-4 ring-blue-500/80" />
+                      <span className="pointer-events-none absolute inset-[6%] z-20 rounded-full ring-4 ring-cyan-500/80" />
                     )}
 
                     {c === 0 && (
-                      <span className="pointer-events-none absolute left-0.5 top-0.5 text-[9px] font-bold text-black/40 sm:text-[10px]">
+                      <span className="pointer-events-none absolute left-0.5 top-0.5 text-[9px] font-bold text-slate-700/40 sm:text-[10px]">
                         {8 - r}
                       </span>
                     )}
                     {r === 7 && (
-                      <span className="pointer-events-none absolute bottom-0.5 right-0.5 text-[9px] font-bold text-black/40 sm:text-[10px]">
+                      <span className="pointer-events-none absolute bottom-0.5 right-0.5 text-[9px] font-bold text-slate-700/40 sm:text-[10px]">
                         {FILES[c]}
                       </span>
                     )}
@@ -330,20 +330,16 @@ export default function CatChess({ onExit }) {
                 <FlyingPiece key={`${moveAnim.id}-${index}`} segment={segment} />
               ))}
           </div>
-
-          <p className="text-xs text-orange-700/80 sm:text-sm">
-            Un ajedrez simplificado para divertir a los gatitos 🐾
-          </p>
         </div>
 
-        <aside className="w-full max-w-md space-y-4 rounded-2xl border border-orange-200 bg-white/85 p-4 shadow-lg backdrop-blur lg:w-72">
+        <aside className="w-full max-w-md space-y-4 rounded-2xl border border-cyan-200 bg-white/85 p-4 shadow-lg backdrop-blur lg:w-72">
           <div className="flex items-center justify-between gap-2">
             <span className="text-sm font-semibold text-slate-700">{turnLabel}</span>
-            {aiTurn && <span className="h-3 w-3 animate-ping rounded-full bg-orange-500" />}
+            {aiTurn && <span className="h-3 w-3 animate-ping rounded-full bg-cyan-600" />}
           </div>
           <p className={`text-xs font-medium ${engineStatus.tone}`}>{engineStatus.text}</p>
 
-          <div className="rounded-xl bg-orange-50 p-1">
+          <div className="rounded-xl bg-cyan-50 p-1">
             <div className="grid grid-cols-2 gap-1">
               <button
                 type="button"
@@ -352,7 +348,7 @@ export default function CatChess({ onExit }) {
                   reset();
                 }}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  vsAI ? 'bg-orange-500 text-white shadow' : 'text-orange-700 hover:bg-orange-100'
+                  vsAI ? 'bg-cyan-600 text-white shadow' : 'text-cyan-700 hover:bg-cyan-100'
                 }`}
               >
                 🐱 vs IA
@@ -364,7 +360,7 @@ export default function CatChess({ onExit }) {
                   reset();
                 }}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  !vsAI ? 'bg-orange-500 text-white shadow' : 'text-orange-700 hover:bg-orange-100'
+                  !vsAI ? 'bg-cyan-600 text-white shadow' : 'text-cyan-700 hover:bg-cyan-100'
                 }`}
               >
                 👥 2 jugadores
@@ -386,8 +382,8 @@ export default function CatChess({ onExit }) {
                       title={level.desc}
                       className={`flex flex-col items-center rounded-xl border px-2 py-2 text-xs font-semibold transition ${
                         active
-                          ? 'border-orange-400 bg-orange-500 text-white shadow-md'
-                          : 'border-orange-200 bg-white text-orange-700 hover:-translate-y-0.5 hover:shadow'
+                          ? 'border-cyan-400 bg-cyan-600 text-white shadow-md'
+                          : 'border-cyan-200 bg-white text-cyan-700 hover:-translate-y-0.5 hover:shadow'
                       }`}
                     >
                       <span className="text-lg leading-none">{level.emoji}</span>
@@ -408,7 +404,7 @@ export default function CatChess({ onExit }) {
           <button
             type="button"
             onClick={reset}
-            className="w-full rounded-xl bg-orange-600 px-4 py-2.5 font-semibold text-white shadow transition hover:-translate-y-0.5 hover:bg-orange-700"
+            className="w-full rounded-xl bg-cyan-600 px-4 py-2.5 font-semibold text-white shadow transition hover:-translate-y-0.5 hover:bg-cyan-700"
           >
             Reiniciar partida
           </button>
@@ -417,22 +413,22 @@ export default function CatChess({ onExit }) {
 
       {gameOver && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="animate-modal-pop w-full max-w-sm rounded-2xl border border-orange-200 bg-white p-6 text-center shadow-2xl">
+          <div className="animate-modal-pop w-full max-w-sm rounded-2xl border border-cyan-200 bg-white p-6 text-center shadow-2xl">
             <p className="text-5xl">{gameOver.icon}</p>
-            <h2 className="mt-2 text-2xl font-bold text-orange-800">{gameOver.title}</h2>
+            <h2 className="mt-2 text-2xl font-bold text-cyan-900">{gameOver.title}</h2>
             <p className="mt-1 text-sm text-slate-600">{gameOver.subtitle}</p>
             <div className="mt-5 flex flex-col gap-2 sm:flex-row">
               <button
                 type="button"
                 onClick={reset}
-                className="flex-1 rounded-xl bg-orange-600 px-4 py-2.5 font-semibold text-white shadow transition hover:bg-orange-700"
+                className="flex-1 rounded-xl bg-cyan-600 px-4 py-2.5 font-semibold text-white shadow transition hover:bg-cyan-700"
               >
                 Jugar otra vez
               </button>
               <button
                 type="button"
                 onClick={onExit}
-                className="flex-1 rounded-xl border border-orange-200 bg-white px-4 py-2.5 font-semibold text-orange-700 transition hover:bg-orange-50"
+                className="flex-1 rounded-xl border border-cyan-200 bg-white px-4 py-2.5 font-semibold text-cyan-700 transition hover:bg-cyan-50"
               >
                 Menú
               </button>

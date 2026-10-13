@@ -101,12 +101,12 @@
 }
 
 .piece-white {
-  filter: brightness(1.28) saturate(0.7) drop-shadow(0 2px 2px rgba(90, 55, 20, 0.35));
+  filter: brightness(1.28) saturate(0.7) drop-shadow(0 2px 2px rgba(8, 47, 73, 0.3));
 }
 
 .piece-black {
   filter: brightness(0.32) saturate(0.75) contrast(1.15)
-    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45));
+    drop-shadow(0 2px 2px rgba(8, 47, 73, 0.45));
 }
 
 .target-dot {
