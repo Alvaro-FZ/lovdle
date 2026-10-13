@@ -1,4 +1,5 @@
 import Lovdle from './Lovdle';
+import CatChess from './CatChess';
 
 export const GAMES = [
   {
@@ -9,5 +10,14 @@ export const GAMES = [
     emoji: '💘',
     gradient: 'linear-gradient(135deg, #fda4af 0%, #fb7185 100%)',
     component: Lovdle,
+  },
+  {
+    id: 'catchess',
+    title: 'CAT CHESS',
+    tagline: 'Ajedrez gatuno',
+    description: 'Ajedrez para caracolis.',
+    emoji: '🐱',
+    gradient: 'linear-gradient(135deg, #fdba74 0%, #f97316 100%)',
+    component: CatChess,
   },
 ];

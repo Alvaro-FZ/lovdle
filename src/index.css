@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 @font-face {
   font-family: 'Winky Sans';
@@ -12,11 +13,21 @@
 }
 
 @theme {
+  /* Dashboard - Bento */
+  --font-bento-sans: "Inter", "Nunito", system-ui;
+  --font-bento-display: "Inter", "Fredoka", system-ui;
+  --font-bento-mono: "JetBrains Mono", monospace;
+
+  /* Lovdle - Sega (Arcade) */
+  --font-sega-pixel: "VT323", monospace;
+
+  /* Legacy fonts for compatibility */
   --font-dynapuff: "DynaPuff", system-ui;
   --font-winky: "Winky Sans", sans-serif;
   --font-sniglet: "Sniglet", sans-serif;
   --font-fredoka: "Fredoka", system-ui;
   --font-nunito: "Nunito", system-ui;
+  --font-vt323: "VT323", monospace;
 
   @keyframes soft-float {
     0%, 100% { transform: translateY(0); }
@@ -57,8 +68,68 @@
     100% { transform: scale(1); opacity: 1; }
   }
   --animate-modal-pop: modal-pop 0.3s ease-out forwards;
+
+  /* Sega animations */
+  @keyframes sega-press {
+    0% { transform: translateY(0); box-shadow: 0 4px 0 0 rgba(0,0,0,0.3); }
+    50% { transform: translateY(2px); box-shadow: 0 2px 0 0 rgba(0,0,0,0.3); }
+    100% { transform: translateY(4px); box-shadow: 0 0 0 0 rgba(0,0,0,0.3); }
+  }
+  --animate-sega-press: sega-press 0.1s ease-out forwards;
+
+  @keyframes sega-pop {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  --animate-sega-pop: sega-pop 0.2s ease-out forwards;
 }
 
 .cell-soft {
   @apply rounded-2xl shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)] bg-slate-800;
+}
+
+/* --- CAT CHESS --- */
+.chess-board {
+  width: clamp(270px, min(94vw, calc(100dvh - 250px)), 640px);
+  touch-action: manipulation;
+}
+
+@media (min-width: 1024px) {
+  .chess-board {
+    width: clamp(380px, min(48vw, calc(100dvh - 190px)), 680px);
+  }
+}
+
+.piece-white {
+  filter: brightness(1.28) saturate(0.7) drop-shadow(0 2px 2px rgba(90, 55, 20, 0.35));
+}
+
+.piece-black {
+  filter: brightness(0.32) saturate(0.75) contrast(1.15)
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45));
+}
+
+.target-dot {
+  animation: target-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes target-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flying-piece {
+    transition: none !important;
+  }
+  .target-dot {
+    animation: none;
+  }
 }
